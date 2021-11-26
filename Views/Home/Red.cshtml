@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Редактирование блога";
+}
+
+<h2>Red</h2>
+
+<div>
+    <h3>Форма редактирование</h3>
+    <form method="post">
+        
+        <table>
+
+            <td><p>Введите название блога</p></td>
+
+            <td><input type="text" name="NameBlog" /></td>
+
+            <td><p>Введите текст блога</p></td>
+            <td>
+                <input type="text" name="TextField" />
+            </td>
+            <td><input type="hidden" name="Id" value="@ViewBag.BlogId" /></td>
+            <tr><td><input type="submit" value="Отправить" /></td></tr>
+
+        </table>
+    </form>
+</div>
+

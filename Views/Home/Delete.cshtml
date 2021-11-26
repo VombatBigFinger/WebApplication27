@@ -1,0 +1,21 @@
+﻿@model WebApplication27.Models.MyBlog
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<d1>
+    <dt>Название</dt>
+    <dd>@Html.DisplayFor(model => model.NameBlog)</dd>
+
+    <dt>Текст</dt>
+    <dd>@Html.DisplayFor(model => model.TextField)</dd>
+
+</d1>
+
+@using (Html.BeginForm())
+            {
+                <input type="submit" value="Удалить"/>
+            }
