@@ -46,7 +46,7 @@ namespace WebApplication27.Controllers
 
         [ValidateInput(false)]
         [HttpPost]
-        public ActionResult Red(string NameBlog, string TextField, string FullTextField, int id)
+        public ActionResult Red(string NameBlog, string TextField, string FullTextField, int id) 
         {
             MyBlog r = db.Blog.First(d => d.Id == id);
 
