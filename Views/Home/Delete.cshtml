@@ -1,21 +1,22 @@
 ﻿@model WebApplication27.Models.MyBlog
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Удаление маньяка";
 }
-
+<script src="~/js/ckeditor/ckeditor.js"></script>
 <h2>Delete</h2>
 
 <d1>
     <dt>Название</dt>
     <dd>@Html.DisplayFor(model => model.NameBlog)</dd>
 
-    <dt>Текст</dt>
+    <dt>Краткое описание</dt>
     <dd>@Html.DisplayFor(model => model.TextField)</dd>
+   
 
 </d1>
 
 @using (Html.BeginForm())
-            {
-                <input type="submit" value="Удалить"/>
-            }
+{
+    <input class="btn btn-danger" type="submit" value="Удалить"/>
+}

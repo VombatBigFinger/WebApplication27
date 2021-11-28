@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Просмотр информации о маньяке";
+}
+
+<h2>Читаем про маньяка</h2>
+
+@foreach (var b in ViewBag.Blog)
+{
+<tr>
+    <td><p>@b.NameBlog </p></td><br>
+    <td><p>@b.TextField</p></td>
+    <td><p>@Html.Raw(b.FullTextField)</p></td>
+    <td><p>@b.DateAdded</p></td>
+
+
+
+</tr>}

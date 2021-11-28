@@ -10,6 +10,13 @@ namespace WebApplication27.Models
 {
     public class MyBlogContext:DbContext
     {
+        public MyBlogContext():base ("MyBlogContext")
+        {
+
+        }
+
+
+
 
         public DbSet<MyBlog> Blog { get; set; }
     }
@@ -19,8 +26,8 @@ namespace WebApplication27.Models
         protected override void Seed(MyBlogContext db)
         {
 
-            db.Blog.Add(new MyBlog { NameBlog = "Dodomyan", TextField = "I love big cocks" , DateAdded =DateTime.Now});
-            db.Blog.Add(new MyBlog { NameBlog = "Dodomывyan", TextField = "I love big cыввывыocks", DateAdded = DateTime.Now });
+            db.Blog.Add(new MyBlog { NameBlog = "Dodomyan", TextField = "I love big cocks", FullTextField="ВВВВВ!!!!    ДОААА", DateAdded =DateTime.Now});
+            db.Blog.Add(new MyBlog { NameBlog = "Dodomывyan", TextField = "I love big cыввывыocks", FullTextField="вавав         авыаыва", DateAdded = DateTime.Now });
             base.Seed(db);
         }
     }

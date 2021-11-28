@@ -23,6 +23,7 @@ namespace WebApplication27
             
             services.AddSingleton<MyBlogContext>();
             services.AddTransient<MyBlog>();
+            
         }
     }
 }

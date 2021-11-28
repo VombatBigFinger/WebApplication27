@@ -1,24 +1,40 @@
-﻿
+﻿@model WebApplication27.Models.MyBlog
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Добавление маньяка";
 }
 
-<h2>Add</h2>
 
+
+<script src="~/js/ckeditor/ckeditor.js"></script>
 
 <div>
     <h3>Форма редактирование</h3>
-    <form method="post">
-        
+    <form method="post" novalidate>
+
         <table>
-           
-            <input type="text" name="NameBlog"  />
+            <td><p>Введите название блога</p></td>
 
-            
-            <input type="text" name="TextField"  />
+            <td><input type="text" class="text-dark" name="NameBlog" /></td>
+
+            <td><p>Введите краткое описание</p></td>
+            <td><input type="text" class="text-dark" name="TextField" /></td>
 
 
-            <tr><td><input type="submit" value="Отправить" /></td></tr>
 
         </table>
+
+        <td><p>Введите текст</p></td>
+        <textarea class="text-dark" name="FullTextField"></textarea>
+
+
+        <tr><td><input class="btn btn-success" type="submit" value="Отправить" /></td></tr>
     </form>
+
+
+
+</div>
+
+
+<script>
+    CKEDITOR.replaceAll();
+</script>

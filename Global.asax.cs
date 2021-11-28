@@ -15,9 +15,9 @@ namespace WebApplication27
     {
         protected void Application_Start()
         {
-            
 
-            Database.SetInitializer(new MyBlogDbIniliazer());
+            Database.SetInitializer<MyBlogContext>(null);
+            //Database.SetInitializer(new MyBlogDbIniliazer());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

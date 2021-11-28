@@ -15,52 +15,77 @@ namespace WebApplication27.Controllers
 
         public ActionResult Index()
         {
-            var blog = db.Blog;
+            var blog = db.Blog.OrderByDescending(t=>t.DateAdded);
+            
+            ViewBag.Blog = blog;
+            return View();
+        }
+        [HttpGet]
+        public ActionResult WatchBlog(int id)
+        {
+            var blog = db.Blog.Where(t => t.Id == id);
+            ViewBag.Blog = blog;
+            return View();
+        }
+        public ActionResult Search(String Name)
+        {
+            var blog = db.Blog.Where(t => t.NameBlog == Name);
             ViewBag.Blog = blog;
             return View();
         }
 
-
-
+        [ValidateInput(false)]
         [HttpGet]
         public ActionResult Red(int id)
         {
+            var blog = db.Blog.Where(t => t.Id == id);
+
             ViewBag.BlogId = id;
             return View();
         }
+
+        [ValidateInput(false)]
         [HttpPost]
-        public ActionResult Red(string NameBlog, string TextField, int id)
+        public ActionResult Red(string NameBlog, string TextField, string FullTextField, int id)
         {
             MyBlog r = db.Blog.First(d => d.Id == id);
-            
+
             r.DateAdded = DateTime.Now;
-            r.NameBlog = NameBlog;
-            r.TextField = TextField;
-            
+            if(!string.IsNullOrEmpty(NameBlog))
+                r.NameBlog = NameBlog;
+
+            if (!string.IsNullOrEmpty(TextField))
+                r.TextField = TextField;
+
+            if (!string.IsNullOrEmpty(FullTextField))
+                r.FullTextField = FullTextField;
+
             db.SaveChanges();
             return Redirect("/Home");
         }
-
-
 
         public ActionResult Add()
         {
             return View();
         }
-
+        [ValidateInput(false)]
         [HttpPost]
-        public ActionResult Add(string NameBlog, string TextField)
+        public ActionResult Add(string NameBlog, string TextField, string FullTextField)
         {
             MyBlog newblog = new MyBlog();
-
-            newblog.NameBlog = NameBlog;
-            newblog.TextField = TextField;
-            newblog.DateAdded = DateTime.Now;
-            db.Blog.Add(newblog);
-            db.SaveChanges();
-
+            if (!string.IsNullOrEmpty(NameBlog) )
+            {
+                newblog.NameBlog = NameBlog;
+                newblog.TextField = TextField;
+                newblog.FullTextField = FullTextField;
+                newblog.DateAdded = DateTime.Now;
+                db.Blog.Add(newblog);
+                db.SaveChanges();
+            }
+          
             return Redirect("/Home");
         }
+
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -100,6 +125,10 @@ namespace WebApplication27.Controllers
             return View();
         }
 
-
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
     }  
 }

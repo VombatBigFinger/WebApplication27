@@ -1,28 +1,42 @@
-﻿
+﻿@model WebApplication27.Models.MyBlog
 @{
-    ViewBag.Title = "Редактирование блога";
+    ViewBag.Title = "Редактирование маньяка";
 }
-
-<h2>Red</h2>
-
 <div>
-    <h3>Форма редактирование</h3>
-    <form method="post">
-        
-        <table>
+    <h2>Red</h2>
 
-            <td><p>Введите название блога</p></td>
+    <script src="~/js/ckeditor/ckeditor.js"></script>
 
-            <td><input type="text" name="NameBlog" /></td>
+    <div>
+        <h3>Форма редактирование</h3>
+        <form method="post" novalidate>
 
-            <td><p>Введите текст блога</p></td>
-            <td>
-                <input type="text" name="TextField" />
-            </td>
-            <td><input type="hidden" name="Id" value="@ViewBag.BlogId" /></td>
-            <tr><td><input type="submit" value="Отправить" /></td></tr>
+            <table>
+                <td><input type="hidden" name="Id" value="@ViewBag.BlogId" /></td>
+                <td><p>Введите название блога</p></td>
 
-        </table>
-    </form>
+                <td><input type="text" class="text-dark" name="NameBlog" /></td>
+
+                <td><p>Введите краткое описание блога</p></td>
+                <td>
+                    <input type="text" class="text-dark" name="TextField" /></td>
+ />
+                </td>
+
+
+            </table>
+            <p>Введите текст блога</p>
+            <textarea name="FullTextField"></textarea>
+            <tr><td><input class="btn btn-success" type="submit" value="Отправить" /></td></tr>
+
+        </form>
+    </div>
+
+
 </div>
 
+
+
+<script>
+    CKEDITOR.replaceAll();
+</script>

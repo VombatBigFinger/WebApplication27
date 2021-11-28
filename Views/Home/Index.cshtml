@@ -1,25 +1,39 @@
 ﻿@{
-    ViewBag.Title = "Блог Черта";
+    ViewBag.Title = "Маньяки";
 }
 
-<dib>
-    <h3>
-    </h3>
-    <td>
-        <p>
-            Блоги
-        </p>
-    <td><p><a href="/Home/Add/">Добавить новый блог</a></p></td>
-    </td>
-    @foreach (var b in ViewBag.Blog)
-    {<tr>
-    <td><p>@b.NameBlog </p></td>
-    <td><p>@b.TextField</p></td>
-    <td><p>@b.DateAdded</p></td>
-    <td><p><a href="/Home/Red/@b.Id">Редактировать</a></p></td>
-    <td><p><a href="/Home/Delete/@b.Id">Удалить</a></p></td>
+<h3>Маньячная коллекция</h3>
+
+<div>
+    <form class="catalog__search" method="post" action="~/Home/Search">
+        <input type="text" class="text-dark" id="search" placeholder="Поиск" name="Name" value="@ViewBag.Name" />
+    </form>
+    <a style="font-size: medium" class="me-2 py-2 text-center text-white text-decoration-none" href="/Home/Add/">Добавить нового маньяка</a>
+
+    <div>
+        <div class="container">
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
 
-</tr>}
-
-</dib>
+                @foreach (var b in ViewBag.Blog)
+                {
+                    <div style="font-size: small " class="text-dark col">
+                        <div class="card shadow-sm">
+                            <p>@b.NameBlog</p><hr>
+                            <div class="card-body">
+                                <p>@b.TextField</p>
+                                <nav class="d-inline-flex text-center">
+                                    <a class="me-2 py-2 text-center text-dark text-decoration-none" href="/Home/WatchBlog/@b.Id">Просмотреть</a>
+                                    <a class="me-2 py-2 text-center text-dark text-decoration-none" href="/Home/Red/@b.Id">Редактировать</a>
+                                    <a class="me-2 py-2 text-center text-dark text-decoration-none" href="/Home/Delete/@b.Id">Удалить</a>
+                                </nav>
+                            </div>
+                        </div>
+                        <p>@b.DateAdded</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
